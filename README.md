@@ -1,7 +1,7 @@
 ##WKTextFieldFormatter
 ####WKTextFieldFormatter can easily block the unwanted input to the textField.
 
-![()](http://7xneqd.com1.z0.glb.clouddn.com/formatter.gif)
+![()](http://7xneqd.com1.z0.glb.clouddn.com/format.gif)
 
 1. Set __WKTextFieldFormatter__ as a property in controller:
 
@@ -42,4 +42,4 @@ _textFieldFormatter.limitedLength = 8;
 * When using __WKTextFieldFormatter__, you should not set the delegate of the textField manually, because it has been set when __WKTextFieldFormatter__ initializes.
 
 ##License
-WKTextFieldFormatter is released under [__MIT License__](https://github.com/WelkinXie/WKFormativeTextField/blob/master/LICENSE).
+WKTextFieldFormatter is released under [__MIT License__](https://github.com/WelkinXie/WKTextFieldFormatter/blob/master/LICENSE).
