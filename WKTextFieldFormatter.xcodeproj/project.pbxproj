@@ -1,0 +1,320 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2561578C1C2D31DF00D0F409 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2561578B1C2D31DF00D0F409 /* main.m */; };
+		2561578F1C2D31DF00D0F409 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2561578E1C2D31DF00D0F409 /* AppDelegate.m */; };
+		256157921C2D31DF00D0F409 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 256157911C2D31DF00D0F409 /* ViewController.m */; };
+		256157951C2D31DF00D0F409 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 256157931C2D31DF00D0F409 /* Main.storyboard */; };
+		256157971C2D31DF00D0F409 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 256157961C2D31DF00D0F409 /* Assets.xcassets */; };
+		2561579A1C2D31DF00D0F409 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 256157981C2D31DF00D0F409 /* LaunchScreen.storyboard */; };
+		256157A41C2D32B200D0F409 /* WKTextFieldFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 256157A31C2D32B200D0F409 /* WKTextFieldFormatter.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		256157871C2D31DF00D0F409 /* WKTextFieldFormatter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WKTextFieldFormatter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2561578B1C2D31DF00D0F409 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2561578D1C2D31DF00D0F409 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		2561578E1C2D31DF00D0F409 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		256157901C2D31DF00D0F409 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		256157911C2D31DF00D0F409 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		256157941C2D31DF00D0F409 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		256157961C2D31DF00D0F409 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		256157991C2D31DF00D0F409 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2561579B1C2D31DF00D0F409 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		256157A21C2D32B200D0F409 /* WKTextFieldFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKTextFieldFormatter.h; sourceTree = "<group>"; };
+		256157A31C2D32B200D0F409 /* WKTextFieldFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKTextFieldFormatter.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		256157841C2D31DF00D0F409 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2561577E1C2D31DF00D0F409 = {
+			isa = PBXGroup;
+			children = (
+				256157891C2D31DF00D0F409 /* WKTextFieldFormatter */,
+				256157881C2D31DF00D0F409 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		256157881C2D31DF00D0F409 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				256157871C2D31DF00D0F409 /* WKTextFieldFormatter.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		256157891C2D31DF00D0F409 /* WKTextFieldFormatter */ = {
+			isa = PBXGroup;
+			children = (
+				256157A11C2D32B200D0F409 /* WKTextFieldFormatter */,
+				2561578D1C2D31DF00D0F409 /* AppDelegate.h */,
+				2561578E1C2D31DF00D0F409 /* AppDelegate.m */,
+				256157901C2D31DF00D0F409 /* ViewController.h */,
+				256157911C2D31DF00D0F409 /* ViewController.m */,
+				256157931C2D31DF00D0F409 /* Main.storyboard */,
+				256157961C2D31DF00D0F409 /* Assets.xcassets */,
+				256157981C2D31DF00D0F409 /* LaunchScreen.storyboard */,
+				2561579B1C2D31DF00D0F409 /* Info.plist */,
+				2561578A1C2D31DF00D0F409 /* Supporting Files */,
+			);
+			path = WKTextFieldFormatter;
+			sourceTree = "<group>";
+		};
+		2561578A1C2D31DF00D0F409 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2561578B1C2D31DF00D0F409 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		256157A11C2D32B200D0F409 /* WKTextFieldFormatter */ = {
+			isa = PBXGroup;
+			children = (
+				256157A21C2D32B200D0F409 /* WKTextFieldFormatter.h */,
+				256157A31C2D32B200D0F409 /* WKTextFieldFormatter.m */,
+			);
+			path = WKTextFieldFormatter;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		256157861C2D31DF00D0F409 /* WKTextFieldFormatter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2561579E1C2D31DF00D0F409 /* Build configuration list for PBXNativeTarget "WKTextFieldFormatter" */;
+			buildPhases = (
+				256157831C2D31DF00D0F409 /* Sources */,
+				256157841C2D31DF00D0F409 /* Frameworks */,
+				256157851C2D31DF00D0F409 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WKTextFieldFormatter;
+			productName = WKTextFieldFormatter;
+			productReference = 256157871C2D31DF00D0F409 /* WKTextFieldFormatter.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2561577F1C2D31DF00D0F409 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = WelkinXie;
+				TargetAttributes = {
+					256157861C2D31DF00D0F409 = {
+						CreatedOnToolsVersion = 7.2;
+					};
+				};
+			};
+			buildConfigurationList = 256157821C2D31DF00D0F409 /* Build configuration list for PBXProject "WKTextFieldFormatter" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2561577E1C2D31DF00D0F409;
+			productRefGroup = 256157881C2D31DF00D0F409 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				256157861C2D31DF00D0F409 /* WKTextFieldFormatter */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		256157851C2D31DF00D0F409 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2561579A1C2D31DF00D0F409 /* LaunchScreen.storyboard in Resources */,
+				256157971C2D31DF00D0F409 /* Assets.xcassets in Resources */,
+				256157951C2D31DF00D0F409 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		256157831C2D31DF00D0F409 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				256157A41C2D32B200D0F409 /* WKTextFieldFormatter.m in Sources */,
+				256157921C2D31DF00D0F409 /* ViewController.m in Sources */,
+				2561578F1C2D31DF00D0F409 /* AppDelegate.m in Sources */,
+				2561578C1C2D31DF00D0F409 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		256157931C2D31DF00D0F409 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				256157941C2D31DF00D0F409 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		256157981C2D31DF00D0F409 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				256157991C2D31DF00D0F409 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2561579C1C2D31DF00D0F409 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		2561579D1C2D31DF00D0F409 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2561579F1C2D31DF00D0F409 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = WKTextFieldFormatter/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = WelkinXie.WKTextFieldFormatter;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		256157A01C2D31DF00D0F409 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = WKTextFieldFormatter/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = WelkinXie.WKTextFieldFormatter;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		256157821C2D31DF00D0F409 /* Build configuration list for PBXProject "WKTextFieldFormatter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2561579C1C2D31DF00D0F409 /* Debug */,
+				2561579D1C2D31DF00D0F409 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2561579E1C2D31DF00D0F409 /* Build configuration list for PBXNativeTarget "WKTextFieldFormatter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2561579F1C2D31DF00D0F409 /* Debug */,
+				256157A01C2D31DF00D0F409 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2561577F1C2D31DF00D0F409 /* Project object */;
+}
