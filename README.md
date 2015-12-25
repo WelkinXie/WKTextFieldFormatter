@@ -1,7 +1,7 @@
 ##WKTextFieldFormatter
 ####WKTextFieldFormatter can easily block the unwanted input to the textField.
 
-![()](http://7xneqd.com1.z0.glb.clouddn.com/formatter.gif)
+![()](http://7xneqd.com1.z0.glb.clouddn.com/format.gif)
 
 1. Set __WKTextFieldFormatter__ as a property in controller:
 
