@@ -42,4 +42,4 @@ _textFieldFormatter.limitedLength = 8;
 * When using __WKTextFieldFormatter__, you should not set the delegate of the textField manually, because it has been set when __WKTextFieldFormatter__ initializes.
 
 ##License
-WKTextFieldFormatter is released under [__MIT License__](https://github.com/WelkinXie/WKFormativeTextField/blob/master/LICENSE).
+WKTextFieldFormatter is released under [__MIT License__](https://github.com/WelkinXie/WKTextFieldFormatter/blob/master/LICENSE).
