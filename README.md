@@ -7,9 +7,9 @@
 
 		@property (strong, nonatomic) WKTextFieldFormatter *textFieldFormatter;
 
-1. Initialize __WKTextFieldFormatter__ with method `initWithTextField:`:
+1. Initialize __WKTextFieldFormatter__ with method `initWithTextField:controller:`:
 	
-		_textFieldFormatter = [[WKTextFieldFormatter alloc] initWithTextField:textField];
+		_textFieldFormatter = [[WKTextFieldFormatter alloc] initWithTextField:_textField controller:self];
 
 1. Then give the property __formatterType__ a value below:
 
