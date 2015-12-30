@@ -23,6 +23,13 @@ typedef enum : NSUInteger {
 @property (assign, nonatomic) NSUInteger limitedLength;
 @property (copy, nonatomic) NSString *characterSet;
 
-- (instancetype)initWithTextField:(UITextField *)textField;
+- (instancetype)initWithTextField:(UITextField *)textField controller:(UIViewController *)viewController;
+
+@end
+
+
+@protocol WKTextFieldFormatterDelegate <NSObject>
+
+- (void)didEnterCharacter:(WKTextFieldFormatter *)formatter currentString:(NSString *)currentString;
 
 @end
