@@ -7,9 +7,9 @@
 
 		@property (strong, nonatomic) WKTextFieldFormatter *textFieldFormatter;
 
-1. Initialize __WKTextFieldFormatter__ with method `initWithTextField:`:
+1. Initialize __WKTextFieldFormatter__ with method `initWithTextField:controller:`:
 	
-		_textFieldFormatter = [[WKTextFieldFormatter alloc] initWithTextField:textField];
+		_textFieldFormatter = [[WKTextFieldFormatter alloc] initWithTextField:_textField controller:self];
 
 1. Then give the property __formatterType__ a value below:
 
@@ -39,7 +39,9 @@ _textFieldFormatter.limitedLength = 8;
 ```
 
 ##Attention
-* When using __WKTextFieldFormatter__, you should not set the delegate of the textField manually, because it has been set when __WKTextFieldFormatter__ initializes.
+* When using __WKTextFieldFormatter__, you should not set the delegate of the textField manually, because it has been set when __WKTextFieldFormatter__ initializes. 
+* So if you want to catch the current input, just comform to __WKTextFieldFormatterDelegate__, and implement method: __didEnterCharacter:currentString:__
+* For more information about this, find in the the demo. :]
 
 ##License
 WKTextFieldFormatter is released under [__MIT License__](https://github.com/WelkinXie/WKTextFieldFormatter/blob/master/LICENSE).
