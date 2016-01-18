@@ -9,6 +9,9 @@
 
 @interface WKTextFieldFormatter ()
 @property (weak, nonatomic) UIViewController *viewController;
+@property (weak, nonatomic) UITextField *field;
+@property (assign, nonatomic) BOOL hasChanged;
+@property (copy, nonatomic) NSString *lastText;
 @end
 
 @implementation WKTextFieldFormatter
@@ -19,10 +22,14 @@ NSString *const kENGLISHALPHABET = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQ
 - (instancetype)initWithTextField:(UITextField *)textField controller:(UIViewController *)viewController {
     if (self = [self init]) {
         textField.delegate = self;
+        _field = textField;
         _viewController = viewController;
         _formatterType = WKFormatterTypeAny;
         _limitedLength = NSUIntegerMax;
         _characterSet = @"";
+        _lastText = @"";
+        
+        [textField addTarget:self action:@selector(textChanged) forControlEvents:UIControlEventAllEditingEvents];
     }
     return self;
 }
@@ -71,8 +78,13 @@ NSString *const kENGLISHALPHABET = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQ
     if ([_viewController respondsToSelector:@selector(didEnterCharacter:currentString:)]) {
         [_viewController performSelector:@selector(didEnterCharacter:currentString:) withObject:self withObject:string];
     }
-    
+    _hasChanged = flag;
     return flag;
+}
+
+- (void)textChanged {
+    _lastText = _field.text = _hasChanged ? _field.text : _lastText;
+    _hasChanged = NO;
 }
 
 - (BOOL)characterFilter:(NSString *)stringSet text:(NSString *)text {
