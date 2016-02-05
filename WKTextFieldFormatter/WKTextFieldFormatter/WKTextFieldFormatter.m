@@ -28,6 +28,7 @@ NSString *const kENGLISHALPHABET = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQ
         _limitedLength = NSUIntegerMax;
         _characterSet = @"";
         _lastText = @"";
+        _decimalPlace = 1;
         
         [textField addTarget:self action:@selector(textChanged) forControlEvents:UIControlEventAllEditingEvents];
     }
@@ -51,6 +52,25 @@ NSString *const kENGLISHALPHABET = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQ
             flag = [self characterFilter:kNUMBERS text:string];
             break;
         }
+        case WKFormatterTypeDecimal:
+        {
+            if (textField.text.length == 0 && [string isEqualToString:@"."]) {
+                flag = NO;
+                break;
+            }
+            NSString *decimalComponent = kNUMBERS;
+            if ([textField.text rangeOfString:@"."].location == NSNotFound) {
+                decimalComponent = [decimalComponent stringByAppendingString:@"."];
+            }
+            else if ([textField.text substringFromIndex:[textField.text rangeOfString:@"."].location].length > _decimalPlace && ![string isEqualToString:@""]) {
+                flag = NO;
+                break;
+            }
+            
+            flag = [self characterFilter:decimalComponent text:string];
+            
+            break;
+        }
         case WKFormatterTypeAlphabet:
         {
             flag = [self characterFilter:kENGLISHALPHABET text:string];
@@ -59,6 +79,17 @@ NSString *const kENGLISHALPHABET = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQ
         case WKFormatterTypeNumberAndAlphabet:
         {
             flag = [self characterFilter:[NSString stringWithFormat:@"%@%@", kNUMBERS, kENGLISHALPHABET] text:string];
+            break;
+        }
+        case WKFormatterTypeIDCard:
+        {
+            if ([textField.text stringByReplacingCharactersInRange:range withString:string].length < 18) {
+                flag = [self characterFilter:kNUMBERS text:string];
+            }
+            else {
+                flag = [self characterFilter:[NSString stringWithFormat:@"%@xX", kNUMBERS] text:string];
+            }
+            _limitedLength = 18;
             break;
         }
         case WKFormatterTypeCustom:

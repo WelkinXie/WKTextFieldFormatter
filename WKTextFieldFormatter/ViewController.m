@@ -22,7 +22,8 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     _formatter = [[WKTextFieldFormatter alloc] initWithTextField:_textField controller:self];
-    _formatter.formatterType = WKFormatterTypePhoneNumber;
+    _formatter.formatterType = WKFormatterTypeDecimal;
+    _formatter.decimalPlace = 2;
     
     [_textField becomeFirstResponder];
 }

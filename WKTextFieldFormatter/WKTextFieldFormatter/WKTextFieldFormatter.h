@@ -12,8 +12,10 @@ typedef enum : NSUInteger {
     WKFormatterTypeAny,
     WKFormatterTypePhoneNumber,
     WKFormatterTypeNumber,
+    WKFormatterTypeDecimal,
     WKFormatterTypeAlphabet,
     WKFormatterTypeNumberAndAlphabet,
+    WKFormatterTypeIDCard,
     WKFormatterTypeCustom
 } WKFormatterType;
 
@@ -22,6 +24,8 @@ typedef enum : NSUInteger {
 @property (assign, nonatomic) WKFormatterType formatterType;
 @property (assign, nonatomic) NSUInteger limitedLength;
 @property (copy, nonatomic) NSString *characterSet;
+
+@property (assign, nonatomic) NSUInteger decimalPlace;
 
 - (instancetype)initWithTextField:(UITextField *)textField controller:(UIViewController *)viewController;
 
