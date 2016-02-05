@@ -15,6 +15,12 @@
 --
 ![()](http://7xneqd.com1.z0.glb.clouddn.com/formatter.gif)
 ##使用方法
+已支持Cocoapods:
+
+	pod 'WKTextFieldFormatter'
+	
+--
+
 1. 首先，把 __WKTextFieldFormatter__ 设置为controller中的一个属性:
 
 		@property (strong, nonatomic) WKTextFieldFormatter *formatter;
