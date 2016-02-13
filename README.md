@@ -15,7 +15,7 @@
 --
 ![()](http://7xneqd.com1.z0.glb.clouddn.com/formatter.gif)
 ##使用方法
-已支持Cocoapods:
+已支持CocoaPods:
 
 	pod 'WKTextFieldFormatter'
 	
