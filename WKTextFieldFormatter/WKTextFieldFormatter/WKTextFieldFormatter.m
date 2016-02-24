@@ -8,8 +8,8 @@
 #import "WKTextFieldFormatter.h"
 
 @interface WKTextFieldFormatter ()
-@property (weak, nonatomic) UIViewController *viewController;
-@property (weak, nonatomic) UITextField *field;
+@property (weak, nonatomic, readonly) UIViewController *viewController;
+@property (weak, nonatomic, readonly) UITextField *field;
 @property (assign, nonatomic) BOOL hasChanged;
 @property (copy, nonatomic) NSString *lastText;
 @end
@@ -106,10 +106,12 @@ NSString *const kENGLISHALPHABET = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQ
         flag = NO;
     }
     
-    if ([_viewController respondsToSelector:@selector(didEnterCharacter:currentString:)]) {
-        [_viewController performSelector:@selector(didEnterCharacter:currentString:) withObject:self withObject:string];
+    if ([_viewController respondsToSelector:@selector(formatter:didEnterCharacter:)]) {
+        [_viewController performSelector:@selector(formatter:didEnterCharacter:) withObject:self withObject:string];
     }
     _hasChanged = flag;
+    
+//    NSLog(@"(%lu,%lu) %@", (unsigned long)range.location, (unsigned long)range.length, string);
     return flag;
 }
 
@@ -126,6 +128,47 @@ NSString *const kENGLISHALPHABET = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQ
     BOOL basicTest = [text isEqualToString:filtered];
     if(!basicTest) {
         return NO;
+    }
+    return YES;
+}
+
+#pragma mark - UITextFieldDelegate
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    if ([_viewController respondsToSelector:@selector(textFieldShouldBeginEditing:)]) {
+        return [_viewController performSelector:@selector(textFieldShouldBeginEditing:) withObject:textField];
+    }
+    return YES;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    if ([_viewController respondsToSelector:@selector(textFieldDidBeginEditing:)]) {
+        [_viewController performSelector:@selector(textFieldDidBeginEditing:) withObject:textField];
+    }
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+    if ([_viewController respondsToSelector:@selector(textFieldShouldEndEditing:)]) {
+        return [_viewController performSelector:@selector(textFieldShouldEndEditing:) withObject:textField];
+    }
+    return YES;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    if ([_viewController respondsToSelector:@selector(textFieldDidEndEditing:)]) {
+        [_viewController performSelector:@selector(textFieldDidEndEditing:) withObject:textField];
+    }
+}
+
+- (BOOL)textFieldShouldClear:(UITextField *)textField {
+    if ([_viewController respondsToSelector:@selector(textFieldShouldClear:)]) {
+        return [_viewController performSelector:@selector(textFieldShouldClear:) withObject:textField];
+    }
+    return YES;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if ([_viewController respondsToSelector:@selector(textFieldShouldReturn:)]) {
+        return [_viewController performSelector:@selector(textFieldShouldReturn:) withObject:textField];
     }
     return YES;
 }

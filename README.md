@@ -15,7 +15,7 @@
 --
 ![()](http://7xneqd.com1.z0.glb.clouddn.com/formatter.gif)
 ##使用方法
-已支持Cocoapods:
+已支持CocoaPods:
 
 	pod 'WKTextFieldFormatter'
 	
@@ -25,21 +25,23 @@
 
 		@property (strong, nonatomic) WKTextFieldFormatter *formatter;
 
-1. 用 `initWithTextField:controller:` 方法初始化 ___formatter__ :
+1. 用 `initWithTextField:controller:` 方法初始化 **_formatter** :
 	
 		_formatter = [[WKTextFieldFormatter alloc] initWithTextField:_textField controller:self];
 
 1. 设置 ___formatter__ 的 __formatterType__ :
 
-		typedef enum : NSUInteger {
-			WKFormatterTypeALL,						//不进行过滤
-			WKFormatterTypePhoneNumber,				//11位数字
-			WKFormatterTypeNumber,					//任何数字
-			WKFormatterTypeDecimal,					//小数,默认精确到1位小数
-			WKFormatterTypeEnglishAlphabet,			//任何英文字母
-		   	WKFormatterTypeNumberAndEnglishAlphabet,//数字和英文字母
-		   	WKFormatterTypeCustom					//自行设置需要过滤的字符集
-		} WKFormatterType;
+		typedef NS_ENUM(NSUInteger, WKFormatterType) {
+    		WKFormatterTypeAny,                 //不过滤
+   			WKFormatterTypePhoneNumber,         //11位电话号码
+	    	WKFormatterTypeNumber,              //数字
+   	 		WKFormatterTypeDecimal,             //小数,默认精确到点后两位
+   			WKFormatterTypeAlphabet,            //英文字母
+    		WKFormatterTypeNumberAndAlphabet,   //数字+英文字母
+    		WKFormatterTypeIDCard,              //18位身份证
+    		WKFormatterTypeCustom               //自定义
+		};
+
 
 	例如:
 
@@ -69,8 +71,12 @@ _formatter.decimalPlace = 2;
 ```
 
 ##注意
-* 当使用了 __WKTextFieldFormatter__, 你不应再自行设置textField的delegate。
-* 如果想获得用户当前输入的字符，可以遵循 __WKTextFieldFormatterDelegate__, 然后实现方法: __didEnterCharacter:currentString:__
+* 当使用了 __WKTextFieldFormatter__, 你**不应**对对应的textField编写如```textField.delegate = self```的代码。仅仅在当前controller实现对应delegate方法即可。
+
+* 以下delegate方法将失效，不会被调用
+```textField:shouldChangeCharactersInRange:replacementString:```
+你可以通过遵循 __WKTextFieldFormatterDelegate__, 然后实现方法: __formatter:didEnterCharacter:__ 来获取用户所输入的字符。
+
 * 更多详情，请看demo. :)
 
 ##License

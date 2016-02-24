@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "WKTextFieldFormatter.h"
 
-@interface ViewController () <WKTextFieldFormatterDelegate>
+@interface ViewController () <WKTextFieldFormatterDelegate, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (strong, nonatomic) WKTextFieldFormatter *formatter;
 
@@ -34,13 +34,15 @@
 }
 
 #pragma mark - WKTextFieldFormatterDelegate
-- (void)didEnterCharacter:(WKTextFieldFormatter *)formatter currentString:(NSString *)currentString {
+- (void)formatter:(WKTextFieldFormatter *)formatter didEnterCharacter:(NSString *)string {
     if ([formatter isEqual:_formatter]) {
-        NSLog(@"%@", currentString);
-        if ([currentString isEqualToString:@"\n"]) {
-            [_textField resignFirstResponder];
-        }
+        NSLog(@"%@", string);
     }
+}
+
+#pragma mark - UITextFieldDelegate
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    return YES;
 }
 
 @end
