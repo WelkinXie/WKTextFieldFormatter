@@ -73,9 +73,7 @@ _formatter.decimalPlace = 2;
 ##注意
 * 当使用了 __WKTextFieldFormatter__, 你**不应**对对应的textField编写如```textField.delegate = self```的代码。仅仅在当前controller实现对应delegate方法即可。
 
-* 以下delegate方法将失效，不会被调用
-```textField:shouldChangeCharactersInRange:replacementString:```
-你可以通过遵循 __WKTextFieldFormatterDelegate__, 然后实现方法: __formatter:didEnterCharacter:__ 来获取用户所输入的字符。
+* delegate方法```textField:shouldChangeCharactersInRange:replacementString:```将失效，不会被调用。你可以通过遵循 __WKTextFieldFormatterDelegate__, 然后实现方法: __formatter:didEnterCharacter:__ 来获取用户所输入的字符。
 
 * 更多详情，请看demo. :)
 
