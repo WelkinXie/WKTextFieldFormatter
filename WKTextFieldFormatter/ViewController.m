@@ -23,7 +23,7 @@
     
     _formatter = [[WKTextFieldFormatter alloc] initWithTextField:_textField controller:self];
     _formatter.formatterType = WKFormatterTypeDecimal;
-    _formatter.decimalPlace = 2;
+    _formatter.decimalPlace = 1;
     
     [_textField becomeFirstResponder];
 }

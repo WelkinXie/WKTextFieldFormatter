@@ -10,14 +10,9 @@
 @interface WKTextFieldFormatter ()
 @property (weak, nonatomic, readonly) UIViewController *viewController;
 @property (weak, nonatomic, readonly) UITextField *field;
-@property (assign, nonatomic) BOOL hasChanged;
-@property (copy, nonatomic) NSString *lastText;
 @end
 
 @implementation WKTextFieldFormatter
-
-NSString *const kNUMBERS = @"0123456789";
-NSString *const kENGLISHALPHABET = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 - (instancetype)initWithTextField:(UITextField *)textField controller:(UIViewController *)viewController {
     if (self = [self init]) {
@@ -25,111 +20,67 @@ NSString *const kENGLISHALPHABET = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQ
         _field = textField;
         _viewController = viewController;
         _formatterType = WKFormatterTypeAny;
-        _limitedLength = NSUIntegerMax;
+        _limitedLength = INT16_MAX;
         _characterSet = @"";
-        _lastText = @"";
         _decimalPlace = 1;
-        
-        [textField addTarget:self action:@selector(textChanged) forControlEvents:UIControlEventAllEditingEvents];
     }
     return self;
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    BOOL flag = YES;
+    if ([_viewController respondsToSelector:@selector(formatter:didEnterCharacter:)]) {
+        [_viewController performSelector:@selector(formatter:didEnterCharacter:) withObject:self withObject:string];
+    }
+    
+    NSPredicate *regexTest;
+    NSString *regexString = @"";
+    NSString *currentText = [textField.text stringByReplacingCharactersInRange:range withString:string];
     switch (_formatterType) {
         case WKFormatterTypeAny:
         {
-            break;
+            return YES;
         }
         case WKFormatterTypePhoneNumber:
         {
-            _limitedLength = 11;
+            regexString = @"^\\d{0,11}$";
+            break;
         }
         case WKFormatterTypeNumber:
         {
-            flag = [self characterFilter:kNUMBERS text:string];
+            regexString = @"^\\d*$";
             break;
         }
         case WKFormatterTypeDecimal:
         {
-            if (textField.text.length == 0 && [string isEqualToString:@"."]) {
-                flag = NO;
-                break;
-            }
-            NSString *decimalComponent = kNUMBERS;
-            if ([textField.text rangeOfString:@"."].location == NSNotFound) {
-                decimalComponent = [decimalComponent stringByAppendingString:@"."];
-            }
-            else if ([textField.text substringFromIndex:[textField.text rangeOfString:@"."].location].length > _decimalPlace && ![string isEqualToString:@""]) {
-                flag = NO;
-                break;
-            }
-            
-            flag = [self characterFilter:decimalComponent text:string];
-            
+            regexString = [NSString stringWithFormat:@"^(\\d+)\\.?(\\d{0,%lu})$", _decimalPlace];
             break;
         }
         case WKFormatterTypeAlphabet:
         {
-            flag = [self characterFilter:kENGLISHALPHABET text:string];
+            regexString = @"^[a-zA-Z]*$";
             break;
         }
         case WKFormatterTypeNumberAndAlphabet:
         {
-            flag = [self characterFilter:[NSString stringWithFormat:@"%@%@", kNUMBERS, kENGLISHALPHABET] text:string];
+            regexString = @"^[a-zA-Z0-9]*$";
             break;
         }
         case WKFormatterTypeIDCard:
         {
-            if ([textField.text stringByReplacingCharactersInRange:range withString:string].length < 18) {
-                flag = [self characterFilter:kNUMBERS text:string];
-            }
-            else {
-                flag = [self characterFilter:[NSString stringWithFormat:@"%@xX", kNUMBERS] text:string];
-            }
-            _limitedLength = 18;
+            regexString = @"^\\d{1,17}[0-9Xx]?$";
             break;
         }
         case WKFormatterTypeCustom:
         {
-            flag = [self characterFilter:_characterSet text:string];
+            regexString = [NSString stringWithFormat:@"^[%@]{0,%lu}$", _characterSet, _limitedLength];
             break;
         }
         default:
             break;
     }
-    NSString *tempString = [textField.text stringByReplacingCharactersInRange:range withString:string];
-    if (tempString.length > _limitedLength) {
-        textField.text = [tempString substringToIndex:_limitedLength];
-        flag = NO;
-    }
-    
-    if ([_viewController respondsToSelector:@selector(formatter:didEnterCharacter:)]) {
-        [_viewController performSelector:@selector(formatter:didEnterCharacter:) withObject:self withObject:string];
-    }
-    _hasChanged = flag;
-    
-//    NSLog(@"(%lu,%lu) %@", (unsigned long)range.location, (unsigned long)range.length, string);
-    return flag;
-}
-
-- (void)textChanged {
-    _lastText = _field.text = _hasChanged ? _field.text : _lastText;
-    _hasChanged = NO;
-}
-
-- (BOOL)characterFilter:(NSString *)stringSet text:(NSString *)text {
-    
-    NSCharacterSet *cs = [[NSCharacterSet characterSetWithCharactersInString:stringSet] invertedSet];
-    NSString *filtered = [[text componentsSeparatedByCharactersInSet:cs] componentsJoinedByString:@""];
-    
-    BOOL basicTest = [text isEqualToString:filtered];
-    if(!basicTest) {
-        return NO;
-    }
-    return YES;
+    regexTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexString];
+    return [regexTest evaluateWithObject:currentText] || currentText.length == 0;
 }
 
 #pragma mark - UITextFieldDelegate
