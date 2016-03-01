@@ -29,7 +29,7 @@
 	
 		_formatter = [[WKTextFieldFormatter alloc] initWithTextField:_textField controller:self];
 
-1. 设置 ___formatter__ 的 __formatterType__ :
+1. 设置 **_formatter** 的 __formatterType__ :
 
 		typedef NS_ENUM(NSUInteger, WKFormatterType) {
     		WKFormatterTypeAny,                 //不过滤
