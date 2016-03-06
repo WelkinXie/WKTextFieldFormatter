@@ -33,9 +33,7 @@
         [_viewController performSelector:@selector(formatter:didEnterCharacter:) withObject:self withObject:string];
     }
     
-    NSPredicate *regexTest;
     NSString *regexString = @"";
-    NSString *currentText = [textField.text stringByReplacingCharactersInRange:range withString:string];
     switch (_formatterType) {
         case WKFormatterTypeAny:
         {
@@ -79,7 +77,10 @@
         default:
             break;
     }
-    regexTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexString];
+    NSString *currentText = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    
+    NSPredicate *regexTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexString];
+    
     return [regexTest evaluateWithObject:currentText] || currentText.length == 0;
 }
 
