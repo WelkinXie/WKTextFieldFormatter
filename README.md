@@ -25,9 +25,9 @@
 
 		@property (strong, nonatomic) WKTextFieldFormatter *formatter;
 
-1. 用 `initWithTextField:controller:` 方法初始化 **_formatter** :
+1. 用 `initWithTextField:` 方法初始化 **_formatter** :
 	
-		_formatter = [[WKTextFieldFormatter alloc] initWithTextField:_textField controller:self];
+		_formatter = [[WKTextFieldFormatter alloc] initWithTextField:_textField];
 
 1. 设置 **_formatter** 的 __formatterType__ :
 
@@ -69,13 +69,6 @@ _formatter.limitedLength = 8;
 ```
 _formatter.decimalPlace = 2;
 ```
-
-##注意
-* 当使用了 __WKTextFieldFormatter__, 你**不应**对对应的textField编写如```textField.delegate = self```的代码。仅仅在当前controller实现对应delegate方法即可。
-
-* delegate方法```textField:shouldChangeCharactersInRange:replacementString:```将失效，不会被调用。你可以通过遵循 __WKTextFieldFormatterDelegate__, 然后实现方法: __formatter:didEnterCharacter:__ 来获取用户所输入的字符。
-
-* 更多详情，请看demo. :)
 
 ##License
 WKTextFieldFormatter is released under [__MIT License__](https://github.com/WelkinXie/WKTextFieldFormatter/blob/master/LICENSE).
