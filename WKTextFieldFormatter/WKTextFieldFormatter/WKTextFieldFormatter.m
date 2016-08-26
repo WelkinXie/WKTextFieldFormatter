@@ -10,36 +10,33 @@
 #import "WKTextFieldFormatter.h"
 
 @interface WKTextFieldFormatter ()
-@property (weak, nonatomic, readonly) UIViewController *viewController;
-@property (weak, nonatomic, readonly) UITextField *field;
+
+@property (copy, nonatomic) NSString *currentText;
+
 @end
 
 @implementation WKTextFieldFormatter
 
-- (instancetype)initWithTextField:(UITextField *)textField controller:(UIViewController *)viewController {
+- (instancetype)initWithTextField:(UITextField *)textField {
     if (self = [self init]) {
-        textField.delegate = self;
-        _field = textField;
-        _viewController = viewController;
         _formatterType = WKFormatterTypeAny;
         _limitedLength = INT16_MAX;
         _characterSet = @"";
         _decimalPlace = 1;
+        _currentText = @"";
+        
+        [textField addTarget:self action:@selector(textChanged:) forControlEvents:UIControlEventEditingChanged];
     }
     return self;
 }
 
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
-{
-    if ([_viewController respondsToSelector:@selector(formatter:didEnterCharacter:)]) {
-        [_viewController performSelector:@selector(formatter:didEnterCharacter:) withObject:self withObject:string];
-    }
-    
+- (void)textChanged:(UITextField *)textField {    
     NSString *regexString = @"";
     switch (_formatterType) {
         case WKFormatterTypeAny:
         {
-            return YES;
+            _currentText = textField.text;
+            return;
         }
         case WKFormatterTypePhoneNumber:
         {
@@ -79,52 +76,12 @@
         default:
             break;
     }
-    NSString *currentText = [textField.text stringByReplacingCharactersInRange:range withString:string];
-    
     NSPredicate *regexTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexString];
-    
-    return [regexTest evaluateWithObject:currentText] || currentText.length == 0;
-}
-
-#pragma mark - UITextFieldDelegate
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
-    if ([_viewController respondsToSelector:@selector(textFieldShouldBeginEditing:)]) {
-        return [_viewController performSelector:@selector(textFieldShouldBeginEditing:) withObject:textField];
+    if (!([regexTest evaluateWithObject:textField.text] || textField.text.length == 0)) {
+        textField.text = self.currentText;
+    } else {
+        self.currentText = textField.text;
     }
-    return YES;
-}
-
-- (void)textFieldDidBeginEditing:(UITextField *)textField {
-    if ([_viewController respondsToSelector:@selector(textFieldDidBeginEditing:)]) {
-        [_viewController performSelector:@selector(textFieldDidBeginEditing:) withObject:textField];
-    }
-}
-
-- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
-    if ([_viewController respondsToSelector:@selector(textFieldShouldEndEditing:)]) {
-        return [_viewController performSelector:@selector(textFieldShouldEndEditing:) withObject:textField];
-    }
-    return YES;
-}
-
-- (void)textFieldDidEndEditing:(UITextField *)textField {
-    if ([_viewController respondsToSelector:@selector(textFieldDidEndEditing:)]) {
-        [_viewController performSelector:@selector(textFieldDidEndEditing:) withObject:textField];
-    }
-}
-
-- (BOOL)textFieldShouldClear:(UITextField *)textField {
-    if ([_viewController respondsToSelector:@selector(textFieldShouldClear:)]) {
-        return [_viewController performSelector:@selector(textFieldShouldClear:) withObject:textField];
-    }
-    return YES;
-}
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    if ([_viewController respondsToSelector:@selector(textFieldShouldReturn:)]) {
-        return [_viewController performSelector:@selector(textFieldShouldReturn:) withObject:textField];
-    }
-    return YES;
 }
 
 @end

@@ -11,7 +11,8 @@
 #import "ViewController.h"
 #import "WKTextFieldFormatter.h"
 
-@interface ViewController () <WKTextFieldFormatterDelegate, UITextFieldDelegate>
+@interface ViewController () <UITextFieldDelegate>
+
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (strong, nonatomic) WKTextFieldFormatter *formatter;
 
@@ -21,11 +22,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
     
-    _formatter = [[WKTextFieldFormatter alloc] initWithTextField:_textField controller:self];
+    _formatter = [[WKTextFieldFormatter alloc] initWithTextField:_textField];
     _formatter.formatterType = WKFormatterTypeDecimal;
-    _formatter.decimalPlace = 1;
+    _formatter.decimalPlace = 2;
     
     [_textField becomeFirstResponder];
 }
@@ -33,18 +33,6 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - WKTextFieldFormatterDelegate
-- (void)formatter:(WKTextFieldFormatter *)formatter didEnterCharacter:(NSString *)string {
-    if ([formatter isEqual:_formatter]) {
-        NSLog(@"%@", string);
-    }
-}
-
-#pragma mark - UITextFieldDelegate
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    return YES;
 }
 
 @end

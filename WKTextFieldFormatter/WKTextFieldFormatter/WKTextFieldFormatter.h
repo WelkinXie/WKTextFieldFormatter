@@ -21,7 +21,7 @@ typedef NS_ENUM(NSUInteger, WKFormatterType) {
     WKFormatterTypeCustom               //自定义
 };
 
-@interface WKTextFieldFormatter : NSObject <UITextFieldDelegate>
+@interface WKTextFieldFormatter : NSObject
 
 //格式类型
 @property (assign, nonatomic) WKFormatterType formatterType;
@@ -35,13 +35,6 @@ typedef NS_ENUM(NSUInteger, WKFormatterType) {
 //小数位
 @property (assign, nonatomic) NSUInteger decimalPlace;
 
-- (instancetype)initWithTextField:(UITextField *)textField controller:(UIViewController *)viewController;
-
-@end
-
-
-@protocol WKTextFieldFormatterDelegate <NSObject>
-
-- (void)formatter:(WKTextFieldFormatter *)formatter didEnterCharacter:(NSString *)string;
+- (instancetype)initWithTextField:(UITextField *)textField;
 
 @end
